@@ -1,3 +1,5 @@
+const weather = document.querySelector("#weather span:first-child");
+const city = document.querySelector("#weather span:last-child");
 const API_KEY = "e4bd5a383f1b45763c71957ab955cfea";
 
 function onGeoOk(position) {
@@ -10,6 +12,10 @@ function onGeoOk(position) {
       city.innerText = data.name;
       weather.innerText = `${data.weather[0].main} / ${data.main.temp}`;
     });
+}
+
+function onGeoError() {
+  alert("Can't find you. No weather for you.");
 }
 
 navigator.geolocation.getCurrentPosition(onGeoOk, onGeoError);
